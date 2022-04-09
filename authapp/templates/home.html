@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ key }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 p-5">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-body">
+          <h1>Вы находитесь на главной</h1>
+            <hr>
+              {% if user.is_authenticated %}
+                <h5>Привет {{ user.username }}</h5>
+                <a href="{% url 'users:logout' %}">Выйти</a>
+              {% else %}
+            <div class="col-md-6 offset-md-4">
+                <a href="{% url 'users:login' %}">Войти</a> |
+                <a href="{% url 'users:signup' %}">Регистрация</a>
+              {% endif %}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
